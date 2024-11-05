@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Logo Detection Extension</h3>
+    <button id="detectButton">Detect Logos</button>
+    <script>
+      document.getElementById("detectButton").addEventListener("click", () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          chrome.tabs.sendMessage(tabs[0].id, { type: "START_DETECTION" });
+        });
+      });
+    </script>
+  </body>
+</html>
